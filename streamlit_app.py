@@ -39,4 +39,5 @@ if response.status_code == 200:
         st.markdown("🧢 Just a regular spender for now 😎")
 
 else:
+    # ✅ This line MUST be indented under `else`
     st.error(f"API call failed with status code: {response.status_code}")
