@@ -7,10 +7,8 @@ st.title('My First Fvckinggg Apppp !!!')
 # Add a welcome message 
 st.write('Welcome to my FKINGGGGGGGGGGAPPPPPPPPPPPPPPPPPPPPPPPP app!') 
 
-# Create a text input 
+# Create a text input for message
 widgetuser_input = st.text_input('Enter a custom message:', 'Hello, Streamlit!') 
-
-# Display the customized message 
 st.write('', widgetuser_input)
 
 # API call to get exchange rates
@@ -20,15 +18,18 @@ if response.status_code == 200:
     data = response.json()
     rates = data.get('rates', {})
 
-    # Currency selection box
-    currency_list = sorted(rates.keys())  # Sort for better UX
-    selected_currency = st.selectbox('Select the currency you want to see:', currency_list)
+    # Currency selection
+    currency_list = sorted(rates.keys())
+    selected_currency = st.selectbox('💱 Select the currency to convert to:', currency_list)
 
-    # Show selected currency rate
-    selected_rate = rates.get(selected_currency)
-    if selected_rate:
-        st.write(f"💱 Exchange rate for USD to {selected_currency}: **{selected_rate}**")
-    else:
-        st.warning(f"Currency {selected_currency} not found.")
+    # Amount input
+    amount_usd = st.number_input('💵 Enter amount in USD:', min_value=0.0, value=1.0, step=0.1)
+
+    # Perform conversion
+    rate = rates.get(selected_currency)
+    converted_amount = amount_usd * rate
+
+    # Display result
+    st.success(f"{amount_usd} USD is equal to {converted_amount:.2f} {selected_currency}")
 else:
     st.error(f"API call failed with status code: {response.status_code}")
