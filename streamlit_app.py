@@ -1,6 +1,5 @@
 import streamlit as st 
 import requests
-import pyfiglet
 
 # Set the app title 
 st.title('My First Fvckinggg Apppp !!!') 
