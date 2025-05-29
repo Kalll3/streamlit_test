@@ -11,7 +11,7 @@ st.write('Welcome to my FKINGGGGGGGGGGAPPPPPPPPPPPPPPPPPPPPPPPP app!')
 widgetuser_input = st.text_input('Enter a custom message:', 'Hello, Streamlit!') 
 
 # Display the customized message 
-st.write('Customized Message:', widgetuser_input)
+st.write('', widgetuser_input)
 
 
 #API calls
