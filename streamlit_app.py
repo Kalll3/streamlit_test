@@ -36,3 +36,7 @@ if response.status_code == 200:
     elif amount_usd >= 1_000_000:
         st.markdown("💸 **You are a Millionaire!**")
     else:
+        st.markdown("🧢 Just a regular spender for now 😎")
+
+else:
+    st.error(f"API call failed with status code: {response.status_code}")
